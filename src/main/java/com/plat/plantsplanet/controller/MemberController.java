@@ -5,10 +5,7 @@ import com.plat.plantsplanet.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -57,6 +54,19 @@ public class MemberController {
         // html로 가져갈 데이터가 있다면 model 사용
         model.addAttribute("memberList", memberDTOList);
         return "list";
+    }
+
+    //이메일 중복 확인(ajax)
+    @PostMapping("/PlantsPlanet/email-check")
+    public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        String emailCheckResult=memberService.emailCheck(memberEmail);
+        return emailCheckResult;
+    }
+    //닉네임 중복 확인(ajax)
+    @PostMapping("/PlantsPlanet/name-check")
+    public @ResponseBody String nameCheck(@RequestParam("memberName") String memberName) {
+        String nameCheckResult = memberService.nameCheck(memberName);
+        return nameCheckResult;
     }
 
     //회원조회

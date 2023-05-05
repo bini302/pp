@@ -86,4 +86,24 @@ public class MemberService {
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
     }
+
+//회원가입 중복 확인
+    public String emailCheck(String memberEmail) {
+        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);
+        if (byMemberEmail.isPresent()) {
+            //조회결과가 있음 => 사용x
+            return null;
+        } else {
+            return "ok";
+        }
+    }
+    public String nameCheck(String memberName) {
+        Optional<MemberEntity> byMemberName = memberRepository.findByMemberName(memberName);
+        if (byMemberName.isPresent()) {
+            //조회결과가 있음 => 사용x
+            return null;
+        } else {
+            return "ok";
+        }
+    }
 }
