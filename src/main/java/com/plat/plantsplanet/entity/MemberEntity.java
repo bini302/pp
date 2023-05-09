@@ -20,9 +20,12 @@ public class MemberEntity {
 
     @Column
     private String memberPassword;
-
     @Column
     private String memberName;
+    @Column
+    private String memberBirth;
+    @Column
+    private String memberNum;
 
     //처음에 회원가입할 땐 id가 자동으로 부여되는데
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
@@ -30,6 +33,8 @@ public class MemberEntity {
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberBirth(memberDTO.getMemberBirth());
+        memberEntity.setMemberNum(memberDTO.getMemberNum());
         return memberEntity;
     }
 
@@ -37,10 +42,11 @@ public class MemberEntity {
     public static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO) {
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setId(memberDTO.getId());
-        //Id
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberBirth(memberDTO.getMemberBirth());
+        memberEntity.setMemberNum(memberDTO.getMemberNum());
         return memberEntity;
     }
 }

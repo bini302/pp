@@ -46,16 +46,6 @@ public class MemberController {
         }
     }
 
-    //회원목록
-    @GetMapping("/PlantsPlanet/")
-    public String findAll(Model model){
-        List<MemberDTO> memberDTOList=memberService.findAll();
-        //여러개 조회
-        // html로 가져갈 데이터가 있다면 model 사용
-        model.addAttribute("memberList", memberDTOList);
-        return "list";
-    }
-
     //이메일 중복 확인(ajax)
     @PostMapping("/PlantsPlanet/email-check")
     public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
@@ -67,15 +57,6 @@ public class MemberController {
     public @ResponseBody String nameCheck(@RequestParam("memberName") String memberName) {
         String nameCheckResult = memberService.nameCheck(memberName);
         return nameCheckResult;
-    }
-
-    //회원조회
-    @GetMapping("/PlantsPlanet/{id}")
-    public String findById(@PathVariable Long id, Model model){
-        MemberDTO memberDTO=memberService.findById(id);
-        //하나만 조회
-        model.addAttribute("member", memberDTO);
-        return "detail";
     }
 
     //회원정보 수정
@@ -91,7 +72,7 @@ public class MemberController {
     public String update(@ModelAttribute MemberDTO memberDTO){
         memberService.update(memberDTO);
         //수정된 정보를 업데이트해서 리다이렉트
-        return "redirect:/PlantsPlanet/"+memberDTO.getId();
+        return "main";
     }
 
     //삭제

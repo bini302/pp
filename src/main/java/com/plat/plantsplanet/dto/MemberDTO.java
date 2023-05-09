@@ -14,6 +14,8 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPassword;
     private String memberName;
+    private String memberBirth;
+    private String memberNum;
 
     public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO=new MemberDTO();
@@ -21,6 +23,8 @@ public class MemberDTO {
         memberDTO.setMemberEmail(memberEntity.getMemberEmail());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());
         memberDTO.setMemberName(memberEntity.getMemberName());
+        memberDTO.setMemberBirth(memberEntity.getMemberBirth());
+        memberDTO.setMemberNum(memberEntity.getMemberNum());
         return memberDTO;
     }
 }
