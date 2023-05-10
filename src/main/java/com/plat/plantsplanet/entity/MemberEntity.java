@@ -11,16 +11,16 @@ import javax.persistence.*;
 @Getter
 @Table(name = "member_table")
 public class MemberEntity {
-    @Id// pk지정
+
+    @Id // pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
 
     @Column(unique = true) //unique 제약조건 추가
     private String memberEmail;
-
     @Column
     private String memberPassword;
-    @Column
+    @Column(unique = true) // unique
     private String memberName;
     @Column
     private String memberBirth;
